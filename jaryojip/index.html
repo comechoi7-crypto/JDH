@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>원기 111년 11월 정단회 자료집</title>
+<meta property="og:title" content="원기 111년 11월 정단회 자료집">
+<meta property="og:description" content="111. 11. 10(화) 오전 9시 · 수위단회 회의실">
+<meta property="og:image" content="emblem.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{--ink:#1f2a37;--sub:#5b6573;--line:#e3e6ea;--bg:#f6f5f1;--card:#fff;--accent:#1e3a5f;--soft:#e8eef5;--warm:#a0703a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Noto Sans KR",system-ui,sans-serif;line-height:1.7;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 18px 64px}
+  header{padding-bottom:26px;border-bottom:2px solid var(--accent);margin-bottom:30px}
+  .eyebrow{font-size:13px;letter-spacing:.08em;color:var(--warm);font-weight:600}
+  h1{font-size:26px;line-height:1.35;margin:8px 0 14px}
+  .lead{font-size:16px;color:var(--sub);margin:0}
+  h2{font-size:18px;margin:42px 0 14px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;flex:none}
+  p{margin:0 0 12px}
+  .topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:0;padding:0;list-style:none}
+  .topics li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 16px}
+  .topics b{display:block;font-size:15px}
+  .topics span{font-size:13.5px;color:var(--sub)}
+  .note{font-size:14px;color:var(--sub);margin-top:12px}
+  .tabs{display:flex;gap:8px;margin-bottom:12px;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:2}
+  .tabs button{flex:1;font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;color:var(--sub)}
+  .tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .panel[hidden]{display:none}
+  .rep-title{font-size:17px;font-weight:700;margin:4px 0 4px}
+  .rep-sub{font-size:13.5px;color:var(--sub);margin-bottom:14px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+  .ev{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+  .ev img{width:100%;aspect-ratio:5/3;object-fit:cover;display:block;background:#ddd;cursor:zoom-in}
+  .ev .body{padding:12px 15px 14px}
+  .ev .d{font-size:13px;color:var(--warm);font-weight:700}
+  .tag{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 8px;border-radius:99px;margin-left:4px;vertical-align:1px}
+  .c1{background:#fbeee0;color:#9a5a1c}.c2{background:#efe7f6;color:#6b3f8f}.c3{background:#e6eef8;color:#2b5687}.c4{background:#e3f2ea;color:#2f6b49}
+  .ev h4{font-size:15.5px;margin:4px 0 2px;line-height:1.45}
+  .ev .w{font-size:12.5px;color:var(--sub)}
+  .ev p{font-size:14px;margin:6px 0 0}
+  .news{margin-top:12px;background:var(--soft);border-radius:10px;padding:12px 16px;font-size:14px}
+  .news b{color:var(--accent);margin-right:8px}
+  .doc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 20px;font-size:14.5px}
+  .doc h3{font-size:15.5px;margin:22px 0 8px;color:var(--accent);padding-bottom:4px;border-bottom:1px solid var(--line)}
+  .doc h3:first-of-type{margin-top:6px}
+  .doc h5{font-size:14.5px;margin:12px 0 4px}
+  .doc ul{margin:0;padding-left:18px}
+  .doc li{margin-bottom:5px}
+  .doc .k{font-weight:600}
+  .doc .m{color:var(--sub);font-size:13.5px}
+  .closing{margin-top:40px;background:var(--soft);border-radius:12px;padding:22px 20px;font-size:15.5px}
+  .closing p:last-child{margin:0}
+  footer{margin-top:28px;font-size:13px;color:var(--sub);text-align:center}
+  #lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out;padding:16px}
+  #lb.on{display:flex}
+  #lb img{max-width:100%;max-height:100%;border-radius:6px}
+
+  html{scroll-behavior:smooth}
+  .cover{text-align:center;padding:8px 0 28px;border-bottom:2px solid var(--accent);margin-bottom:0}
+  .cover .yr{font-size:14px;color:var(--warm);font-weight:700;letter-spacing:.06em}
+  .cover .han{font-family:"Noto Serif KR","Nanum Myeongjo",serif;font-size:36px;letter-spacing:.35em;margin:6px 0 2px;padding-left:.35em;font-weight:700}
+  .cover .kr{font-size:15px;color:var(--sub);letter-spacing:.3em;padding-left:.3em}
+  .cover img{width:150px;height:150px;margin:18px auto 14px;display:block}
+  .meta{display:inline-grid;grid-template-columns:auto auto;gap:2px 12px;text-align:left;font-size:15px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 18px}
+  .meta dt{color:var(--sub)} .meta dd{margin:0;font-weight:600}
+  nav.toc{position:sticky;top:0;z-index:3;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:8px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  nav.toc::-webkit-scrollbar{display:none}
+  nav.toc a{flex:none;font-size:13.5px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 13px}
+  section{scroll-margin-top:60px}
+  h2.sec{font-size:20px;margin:40px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  h3.sub{font-size:16px;margin:24px 0 10px;color:var(--accent)}
+  .order{counter-reset:o;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+  .order li{counter-increment:o;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:15px}
+  .order li::before{content:counter(o)". ";color:var(--warm);font-weight:700}
+  .tk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+  .tk .hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px}
+  .tk .hang{background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;padding:2px 10px;border-radius:99px}
+  .tk .gak{font-size:13px;color:var(--sub)}
+  .tk h4{font-size:15.5px;margin:4px 0 6px}
+  .tk ul{margin:0;padding-left:18px;font-size:14.5px}
+  .tk li{margin-bottom:4px}
+  .linkcard{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--accent);color:#fff;text-decoration:none;border-radius:12px;padding:16px 18px}
+  .linkcard b{display:block;font-size:15.5px}
+  .linkcard span{font-size:13px;opacity:.85}
+  .linkcard .arr{font-size:22px;flex:none}
+  .tabs{position:static;flex-wrap:wrap;padding:0}
+  .tabs button{flex:1 1 calc(50% - 8px)}
+  @media(min-width:560px){.tabs button{flex:1}}
+  .essay{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 20px}
+  .essay .et{font-size:19px;text-align:center;margin:0 0 4px;line-height:1.45}
+  .essay .by{text-align:right;font-size:14px;color:var(--sub);margin-bottom:18px}
+  .ebody p{margin:0 0 4px;font-size:15.5px;line-height:1.85;word-break:keep-all}
+  .ebody p.gap{margin-top:16px}
+  .chk{margin-top:22px;background:var(--soft);border-radius:10px;padding:14px 16px;font-size:14px}
+  .chk b{display:block;color:var(--accent);margin-bottom:4px}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;font-size:15px}
+  .box p:last-child{margin:0}
+  .box h4{font-size:15px;margin:18px 0 6px}
+  .box h4:first-of-type{margin-top:4px}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:14.5px}
+  .kv dt{color:var(--sub);white-space:nowrap}
+  .kv dd{margin:0}
+  .kv ol{margin:0;padding-left:20px}
+  .note2{font-size:13.5px;color:var(--sub);margin-top:10px}
+  .qr{display:flex;gap:14px;align-items:center;margin:12px 0 4px;padding:12px;border:1px dashed #c9ced4;border-radius:10px}
+  .qr img{width:84px;height:auto;flex:none}
+  .qr a{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;margin-top:4px}
+  .qr .t{font-size:13.5px;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="cover">
+    <div class="yr">원기 111년 11월</div>
+    <div class="han">正團會</div>
+    <div class="kr">정단회</div>
+    <img src="emblem.png" alt="출가교화단 단 표지">
+    <dl class="meta"><dt>일 시</dt><dd>111. 11. 10(화) 오전 9시</dd><dt>장 소</dt><dd>수위단회 회의실</dd></dl>
+  </header>
+
+  <nav class="toc" aria-label="목차">
+    <a href="#order">회순</a><a href="#s1">Ⅰ. 항단별 상황보고</a><a href="#s2">Ⅱ. 문답·감정·해오</a><a href="#s3">Ⅲ. 회화</a><a href="#s4">Ⅳ. 기타</a>
+  </nav>
+
+  <section id="order">
+    <h2 class="sec">회 순</h2>
+    <ol class="order">
+      <li>출석보고</li><li>절부합절</li><li>개회</li><li>입정</li><li>심고</li><li>항단별 상황보고</li>
+      <li>문답·감정·해오</li><li>회화</li><li>기타</li><li>절부분급</li><li>폐회</li>
+    </ol>
+  </section>
+
+  <section id="s1">
+    <h2 class="sec">Ⅰ. 항단별 상황보고</h2>
+    <h3 class="sub">1. 원기 111년 10월 출가교화단 특항보고</h3>
+
+    <div class="tk"><div class="hd"><span class="hang">건항1단 (국외)</span><span class="gak">11각단 · 단장 : 한화중</span></div>
+      <h4>[하노이교당 – 베트남 불교계 원불교 공식 방문]</h4>
+      <ul><li>10월 1~5일 베트남 중앙승단위원회 등 7명이 원불교를 공식 방문.</li>
+      <li>원음방송·익산 총부, 복지기관, 영산선학대 등을 둘러보고 원불교와 MOU를 맺음.</li>
+      <li>종교비자(1년→3년)·원불교 법인 문제 등을 논의하고, 경전 번역 협력을 약속받음.</li></ul></div>
+
+    <div class="tk"><div class="hd"><span class="hang">건항2단</span><span class="gak">16각단 · 단장 : 이상순</span></div>
+      <h4>[교역자 학술·출판 성과]</h4>
+      <ul><li>조덕상 교무의 논문 '허그 무드라'(원불교 단전주 수행 기반)가 스프링거 네이처 발행 국제 백과사전에 공식 등재됨.</li>
+      <li>경산상사님 〈육조단경〉〈수심결〉 개정판을 20년 만에 발간. 녹취 타이핑 자료를 바탕으로 오류와 교단 용어를 수정·대조를 진행.</li></ul></div>
+
+    <div class="tk"><div class="hd"><span class="hang">진항2단</span><span class="gak">6각단 · 단장 : 임진은</span></div>
+      <h4>상시훈련 중심 단회 운영</h4>
+      <ul><li>업무 보고보다 상시 공부에 비중을 두기로 함. 다음 달부터 각자 매월 정기일기 1편을 써서 돌아가며 발표하고, 상시응용주의사항을 한 달 공부 표준으로 삼아 실천 감상을 나눌 예정(내년 단회 운영 방향).</li></ul></div>
+
+    <div class="tk"><div class="hd"><span class="hang">이항2단</span><span class="gak">13각단 · 단장 : 장의신</span></div>
+      <h4>상시훈련 중심 단회 운영</h4>
+      <ul><li>매달 상시훈련법 12조항 중 각자 챙긴 조항의 실천 내용을 발표하기로 하고, 이번 단회부터 단원별 사례를 나눔. 법위사정을 앞두고 각자 해당 법위의 법문에 자기 공부를 대조하는 회화도 진행 예정.</li></ul></div>
+
+    <h3 class="sub">2. 항단 상황보고 : 곤항 1단, 곤항 2단, 감항 1단, 감항 2단</h3>
+    <a class="linkcard" href="../report/"><div><b>항단 상황보고 보기</b><span>곤항 1·2단, 감항 1·2단 상황보고 페이지로 이동</span></div><span class="arr">›</span></a>
+  </section>
+
+  <section id="s2">
+    <h2 class="sec">Ⅱ. 문답·감정·해오</h2>
+    <h3 class="sub">1. 공부발표 – 박중훈, 이경열, 나상호, 오정도</h3>
+    <div class="tabs" role="tablist">
+<button role="tab" aria-selected="true" aria-controls="a1" id="t-a1">박중훈</button>
+<button role="tab" aria-selected="false" aria-controls="a2" id="t-a2">이경열</button>
+<button role="tab" aria-selected="false" aria-controls="a3" id="t-a3">나상호</button>
+<button role="tab" aria-selected="false" aria-controls="a4" id="t-a4">오정도</button>
+    </div>
+<article class="panel essay" id="a1" role="tabpanel" aria-labelledby="t-a1">
+  <h3 class="et">교무의 옵션</h3>
+  <div class="by">박중훈 상임중앙</div>
+  <div class="ebody">
+<p>사무처 의전차량 소나타가 알 수 없는 타격으로 운전석 문 중앙이 외관상 문제가 될 정도로 손상을 입었다. 자차보험으로 수리를 의뢰하게 되었고 보험사에서는 수리기간 동안 이용할 수 있는 대차로 같은 모델의 소나타를 내어주었다.</p>
+<p>몇 일간 이용하면서 느낀 소감은 분명 같은 차인데 기능은 불편함을 크게 느낄 정도로 차이가 있음을 실감하였다. 이 차이는 어디에서 생겨나는가? 즉 차량 구입시 옵션 선택에서 발생하는데 렌트회사의 대체 차량은 기본 옵션이고 사무처 의전차량은 풀 옵션의 차이이었다.</p>
+<p>세상에도 차량의 옵션처럼 박사라고 다 같은 박사인가. 교무라고 다 같은 교무인가라는 말들이 회자 된다. 즉 호칭이나 외형이 같다고 해서 그 내용까지 같지는 않다는 것을 의미한다. 사실 이런 말을 들을 때는 불쾌하다. 교무들의 품성이나 역량을 평가하는 전제에서 나온 말이기 때문이다. 다만 나는 이 경계를 당하여 다음과 같은 성찰과 감상을 얻었다.</p>
+<p>원불교 교무는 그 자격 외에 어떤 덕목을 갖춰야 할까.</p>
+<p>￭ 제미나이에게 교법에 바탕하여 다섯 가지를 요구하였더니 다음과 같이 답하였다.</p>
+<p>1) 사무여한의 무아봉공 정신(사은-공익심) / 2) 삼대력을 기르는 끊임없는 정진(삼학-지혜)</p>
+<p>3) 언행일치와 신실함(일상수행의 요법-성실함 정직함 단정한 인품)</p>
+<p>4) 처처불상 사사불공의 자비와 공감(사람들의 아픔과 번뇌를 내 일처럼 경청하고 품어줌)</p>
+<p>5) 시대화 생활화 대중화를 실천하는 교화 안목(시대적 지혜-혁신적이고 열린 안목)</p>
+<p>￭ 여기에 더하여 세상이 원하는 성직자 상을 물으니 다음과 같이 답하였다.</p>
+<p>1)지행합일의 언행일치 / 2)도덕성과 청렴함(무욕과 투명성) / 3)경청과 공감(열린마음)</p>
+<p>4)시대를 읽는 안목과 자기 정진(지혜) / 5)사회적 약자를 향한 헌신과 자비(사회적 책임)</p>
+<p class="gap">위의 조항들에 나를 비추어 보니 나는 원불교 교무로서 갖추어야 할 덕목에서 4)5)번, 세상이 원하는 성직자에서도 4)5)이 다른 항목에 비해 더욱 부족하다는 생각이 들었다.</p>
+<p>나는 시대를 읽고 대처하는 지혜가 부족할 뿐만 아니라 세상의 어려움과 함께하는 사회적 책임에도 소홀하였음을 자인하게 되었다. 어쩌면 나의 공심이 원불교를 위한 공심에 머무르고 나의 수행정진이 나 하나 어찌하는 수준에 머물러 버린 것은 아닐까 하는 물음.</p>
+<p>또 하나의 감상은 이 부족함이 비단 나 하나에 국한된다면 다행한 일이지만 교단의 출가 재가 구성원 중에도 이런 동지들이 많다면 원불교 교단 전체의 사회적 인지도와 교화가 정체되는 요인으로 작용하고 있지는 않을까 하는 생각도 들었다. 덕목 1)2)3)이 교무의 기본 옵션이라면 4)5)는 선택옵션이라 할 것이지만 그 선택옵션이 주는 감동이 매우 컸듯이 교단을 넘어선 헌신과 자비 그리고 시대와 함께하는 안목의 실천이 나와 교단의 옵션이 되기를 ...</p>
+  </div>
+  <div class="chk"><b>[상시일기 점검]</b><div>• 유무념성 심계 : 사량 계교심(월3/1범), 천지 팔도(매일 성찰에 의미를 둠)</div></div>
+</article>
+<article class="panel essay" id="a2" role="tabpanel" aria-labelledby="t-a2" hidden>
+  <h3 class="et">마른미역이 물을 만날 때</h3>
+  <div class="by">이경열 중앙</div>
+  <div class="ebody">
+<p>미역 요리를 위해 마른미역을 그릇에 담은 후, 물을 부었다. 잠시 시간이 흐른 뒤 미역을 살펴보니 조금 전까지만 해도 마른미역이었는데 물을 만난 지 10분 만에 크기와 색깔과 촉감이 달라졌다. 10분 전에 마른미역의 색감은 검은색이요, 촉감은 단단하며 크기는 아주 작았다. 그런데 물을 만난 10분 후에, 색감은 검은색에서 푸른색으로 변화되었고, 촉감은 단단했던 것이 부드러운 물체로 변화되었으며, 크기는 작았는데 물에 불리니 크기가 많이 커져 있음을 보고 한 감상이 들었다.</p>
+<p class="gap">마른미역이 물을 만나니 색감과 촉감과 모양이 변화되어 미역요리를 하기에 최적의 형태로 은현자재함을 바라보며 “와~~ 진공묘유의 조화에 경이로움을 마주하게 되었다. 그렇구나. 인연과 법칙. 인(마른미역)이 연(물)을 만나 과(미역요리 최적 형태)로 변화되었구나. 똑같은 재료이지만 시절인연 따라 다양한 조화의 세계가 펼쳐지는 무량세계를 경험하였다. 만약 마른미역이 불을 만나면 어떻게 될까? 마른미역이 흙을 만나면 어떻게 될까? 정말 조화로운 무량세계다. 특히 미역에 있어서 최고의 시절인연인 미역의 원래 특성을 다 살려낼 수 있는 최고의 조합인 물!!을 만나 미역의 본래 모습으로 회복됨을 알아차린다. 그렇구나. 정말 절묘한 세상 이치구나.”</p>
+<p class="gap">그렇다면 나는 어떤 시절인연을 만나고 있으며, 나는 우주만유를 통하여 세상에 어떤 시절인연이 되고 있는가? 마른미역이 물을 만나면 색감, 촉감, 모양이 미역요리에 딱 좋게 조화를 부리듯, 나도 물의 역할처럼 상대를 비춰주고 살려주고 응원해주고 공감해주고 정화해주고 존중해주어서 본래 원만구족한 모습을 회복할 수 있게 하는 시절인연이 되고 있나 반조해 본다.</p>
+  </div>
+  <div class="chk"><b>[상시일기 점검]</b><div>* 유념조항(일과로 득력하자.)<br>1. 아침(수양정진시간) : 좌선, 개인기도, 축원일기<br>2. 점심(감사보은시간) : 무시선(온생취), 불공(감사보은)<br>3. 저녁(참회대조시간) : 감사일기, 정기일기, 상시일기(유념대조)</div></div>
+</article>
+<article class="panel essay" id="a3" role="tabpanel" aria-labelledby="t-a3" hidden>
+  <h3 class="et">여름이 가을에게 주고 간 선물</h3>
+  <div class="by">건항1단 나상호 단원</div>
+  <div class="ebody">
+<p>총부 아침 공양 시간, 건너 옆자리에서 식사하던 여 교무님께서 삶은 밤을 상위에 올려주셨다. 대각전 옆 밤나무에 떨어진 밤을 주워 삶았다고 한다. 크지 않은데 맛이 참 좋았다.</p>
+<p>“교무님, 참 맛있네요.”</p>
+<p>“그렇지요? 여름이 가을에게 주고 간 선물이지요.”</p>
+<p>“그래요.”</p>
+<p>시어(詩語) 같은 그 말의 여운이 밤 맛처럼 입안에 가득했다.</p>
+<p class="gap">헤아려보면 여름이 가을에게 주고 간 선물이 이뿐일까.</p>
+<p>이처럼 주고 가는 것은 천지자연만의 이치에 그치지 않는다.</p>
+<p>사람 일도 그렇다. 앞 사람이 뒤에 오는 사람에게 남기고 가는 것도 그렇고요.</p>
+<p>그것이 물건일 수도 있고, 마음일 수도 있고, 말 한마디일 수도 있다.</p>
+<p>공중(公衆)의 일도 그렇다.</p>
+<p>후대에 선물을 남기고 가는지 짐을 남기고 가는지.</p>
+<p>뒤따라가는 사람으로서 앞서간 선진(先進) 님의 은혜를 느낀다.</p>
+<p>그분이 뵈었던 분일 수도 있고 그렇지 않은 분도 있다.</p>
+<p>그렇다고 그 어른께서 내가 아는 후진(後進)만 받으라고 하신 것은 아니다.</p>
+<p>마치 여름이 무상 보시(無相布施)로 가을에게 남기고 간 것처럼.</p>
+<p class="gap">다른 이에게 전하는 덕담(德談)도 남기고 가는 선물인 것 같다. 그 덕담은 받은 그 한사람에만 미칠 수 있겠지만, 특별히 염두에 두지 않은 사람들에게까지 전해질 수 있다.</p>
+<p>어떤 일을 당하여 단지 나의 일로써 한 취사(取捨) 또한 다른 이에게 선물이 되기도 하고 그 반대의 경우가 있기도 하다.</p>
+<p class="gap">밤과 함께 전해온 교무님의 말이 참 고마움을 깨닫게 한 하루였다.</p>
+  </div>
+  <div class="chk"><b>[상시일기 점검]</b><div>1. 유무념<br>좌선(대각전)·경전 연마·사경 : 上<br>존야기(存夜氣) : 中下<br>일마다 칭찬 격려 : 中<br>운동(매 식후 20분 이상 걷기) - 中</div></div>
+</article>
+<article class="panel essay" id="a4" role="tabpanel" aria-labelledby="t-a4" hidden>
+  <h3 class="et">나를 탓해야지 누구를 탓하리요</h3>
+  <div class="by">건항2단 오정도 단원</div>
+  <div class="ebody">
+<p>장시간 전화를 하다 보면 나의 생각을 그대로 노출하기 쉽다.</p>
+<p>얼굴을 보면 상대의 표정을 보면서 조금은 걸러낼 수 있는데</p>
+<p>전화는 오직 소리로만 소통하니 상대의 의도를 쉽게 파악할 수 없다.</p>
+<p>나의 의견을 구하기 위해 전화해서는 본인에게 유리한 부분만 취하고</p>
+<p>본인이 가고자 하는 방향과 일치하지 않으면 누군가에게 공격 자료로 쓰니...</p>
+<p>이번 나는 그 동지의 이중성을 처음으로 알게 되었다.</p>
+<p>의견을 구한다는 말에 그의 본의를 파악하지 못했음에 누구를 탓하리요.</p>
+<p>아주 지극히 객관적 의견을 주었음에도 이렇게 씁쓸해지니.....</p>
+<p>이번 일을 겪으며 나에 대한 생각을 다시 해보게 되었다.</p>
+<p>지극히 당연히 꼭 그렇게 해야 한다는 원칙주의적 성향</p>
+<p>요즘 들어 더욱 생각이 근본으로 굳어지고 유연하지 못한 한계....</p>
+<p>어디 진리가 굳어 있는 것 봤는가?</p>
+<p>본질에만 크게 어긋나지 않으면 다 포용하고 가는 것이고,</p>
+<p>그 본질에 접근하도록 수없이 공들이며 기다려주고 또 속아주는 것이지...</p>
+<p>누구를 탓하리요. 그 동지의 한계를 파악하지 못한 나를 탓해야지....</p>
+<p>가을 단풍이 아름다운 것은 오색으로 물들어 가는 다양함인 것을</p>
+<p>아롱이 다롱이 다 다른 인간군상에서 경직되어 버린 나의 한계를 다시 보게 된 계기가 오히려 고마운 일이다.</p>
+  </div>
+  <div class="chk"><b>[상시일기 점검]</b><div>수양 25일 실행<br>연구 28일 실행<br>취사: 계문대조는 특신급 1개, 법마상전급 3계범<br>유무념 대조는 존야기, 독서, 격려하기 : 70% 정도 실행</div></div>
+</article>
+  </section>
+
+  <section id="s3">
+    <h2 class="sec">Ⅲ. 회 화</h2>
+    <h3 class="sub">1. 자유회화</h3>
+    <div class="box">
+      <h4>▸ 회화 운영 방식</h4>
+      <p>· 이번 회화는 별도의 주제나 자료 없이 자유 회화로 진행합니다.</p>
+      <p>· 단원 각자가 현장에서 느끼고 연마해 온 바를 공부·교화·친애 중 자유롭게 나누어 주시기 바랍니다.</p>
+    </div>
+  </section>
+
+  <section id="s4">
+    <h2 class="sec">Ⅳ. 기 타</h2>
+    <h3 class="sub">1. 원기 111년 출가교화단 신분검사 시행 안내</h3>
+    <div class="box">
+      <p>신분검사는 전무출신으로서 스스로의 공부와 생활을 대조하여 점검하는 출가교화단의 소중한 공부입니다. 올해 신분검사는 12월 정단회에서 정단원 여러분과 함께 진행하고자 하오니, 아래 내용을 참고해 주시기 바랍니다.</p>
+
+      <h4>가. 정단원 신분검사 실시</h4>
+      <dl class="kv">
+        <dt>· 기 한</dt><dd>12월 정단회(12월 9일) 전까지</dd>
+        <dt>· 안내서</dt><dd>모바일 안내 페이지(아래 QR코드)</dd>
+        <dt>· 실시방법</dt><dd>아래 두 가지 방법 가운데 편하신 방법으로 실시하실 수 있습니다.
+          <ol type="1" style="list-style:none;padding-left:0;margin-top:4px">
+            <li>① 수기 작성 : 점검표(출력본)에 직접 작성</li>
+            <li>② 신분검사 페이지 작성 : 출가교역자광장 → 출가교화단 → 신분검사<br>- 페이지에 작성하시면 해마다 기록이 쌓여, 한 해 한 해 공부의 변화 추이를 스스로 확인해 보실 수 있습니다.</li>
+          </ol></dd>
+      </dl>
+      <div class="qr"><img src="qr-sinbun.jpg" alt="신분검사 안내서 QR코드"><div><div class="t">신분검사 안내서</div><a href="https://comechoi7-crypto.github.io/sinbun/">안내서 바로 보기</a></div></div>
+      <p class="note2">※ 신분검사 페이지 개선과 관련하여, 전산실에 신분검사 안내자료 게시를 요청하였고 수지대조 부분에 대한 의견을 전달하여 개선을 진행하였습니다.</p>
+
+      <h4>나. 12월 정단회 진행(안)</h4>
+      <dl class="kv">
+        <dt>· 일 시</dt><dd>원기 111년 12월 9일(수) 오후 1시</dd>
+        <dt>· 진행순서</dt><dd>① 신분검사 감상 나누기<br>② 출가교화단 신분검사 운영 의견 나누기<br>③ 감정 및 정리</dd>
+      </dl>
+      <p style="margin-top:8px">· 신분검사를 실시하시며 느끼신 감상과 점검의 소감을 편안하게 나누어 주시기 바랍니다.</p>
+
+      <h4>다. 출가교화단 시행 일정</h4>
+      <dl class="kv">
+        <dt>· 각 단</dt><dd>12월 단회 시 '기타' 순서에서 신분검사 진행</dd>
+        <dt>· 안 내</dt><dd>11월·12월 출가교화단보에 전 단원 안내 게재, 각단 진행 요령은 안내서 내에 수록하였습니다.</dd>
+        <dt>· 배 포</dt><dd>안내서는 11월 출가교화단보, 12월 출가교화단보 QR코드로 전달. 점검표는 전 단원분 발송</dd>
+      </dl>
+    </div>
+
+    <h3 class="sub">2. 원기 111년 12월 정단회 안내</h3>
+    <div class="box">
+      <dl class="kv">
+        <dt>가. 일시</dt><dd>12월 9일(수) 오후 1시</dd>
+        <dt>나. 장소</dt><dd>수위단회 회의실</dd>
+        <dt>다. 준비물</dt><dd>교복, 법락, 절부</dd>
+        <dt>라. 공부담 발표</dt><dd>모경희, 김도천, 정상덕, 유형진</dd>
+        <dt>마. 항단상황보고</dt><dd>건항1단, 건항2단, 태항1단, 태항2단</dd>
+        <dt>바.</dt><dd>신분검사 감상나눔</dd>
+        <dt>사. 보고 및 안건</dt><dd>원기112년 출가교화단·정단회·출가교화단보 운영계획(안), 원기112년 항단훈련단회 안내, 원기111년 정단회비 회계내역보고</dd>
+        <dt>아. 단비 입금 계좌</dt><dd>신협 131-020-012084 (재)원불교<br>(단장: 40만원, 중앙과 단원: 5만원)</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer>원불교 수위단회사무처</footer>
+</div>
+
+<script>
+  const tabs=[...document.querySelectorAll('[role="tab"]')];
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(b=>{const on=b===t;b.setAttribute('aria-selected',on);document.getElementById(b.getAttribute('aria-controls')).hidden=!on;});
+  }));
+</script>
+</body>
+</html>
