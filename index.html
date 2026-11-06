@@ -59,11 +59,20 @@
   #lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out;padding:16px}
   #lb.on{display:flex}
   #lb img{max-width:100%;max-height:100%;border-radius:6px}
-  .priv{position:relative;display:inline;cursor:pointer;border-radius:4px;filter:blur(5px);user-select:none;-webkit-user-select:none;background:rgba(30,58,95,.08);transition:filter .2s}
-  .priv.on{filter:none;user-select:text;-webkit-user-select:text;background:none;cursor:auto}
-  .privwrap{display:inline}
-  .privhint{display:inline-block;font-size:11.5px;font-weight:600;color:var(--accent);background:var(--soft);border-radius:99px;padding:1px 8px;margin-right:6px;vertical-align:1px;cursor:pointer;filter:none}
-  .privhint.hide{display:none}
+  .lock{display:inline-flex;align-items:center;gap:6px;cursor:pointer;vertical-align:middle}
+  .lock .pill{font-size:11.5px;font-weight:600;color:var(--accent);background:var(--soft);border-radius:99px;padding:1px 9px;white-space:nowrap}
+  .lock .bar{display:inline-block;height:.8em;width:9em;max-width:40vw;border-radius:4px;background:repeating-linear-gradient(90deg,#d6dbe1 0 14px,#e7eaee 14px 22px)}
+  .unl{display:inline}
+  #pw{position:fixed;inset:0;background:rgba(20,30,45,.55);display:none;align-items:center;justify-content:center;z-index:20;padding:20px}
+  #pw.on{display:flex}
+  #pw form{background:#fff;border-radius:14px;padding:22px 20px;width:100%;max-width:320px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+  #pw b{display:block;font-size:16px;margin-bottom:4px}
+  #pw p{font-size:13.5px;color:var(--sub);margin:0 0 14px}
+  #pw input{width:100%;font:inherit;font-size:22px;letter-spacing:.4em;text-align:center;padding:10px;border:1px solid var(--line);border-radius:10px}
+  #pw .err{color:#b4442f;font-size:13px;min-height:1.4em;margin:6px 0 0}
+  #pw .row{display:flex;gap:8px;margin-top:10px}
+  #pw button{flex:1;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer}
+  #pw button[type=submit]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
 </style>
 </head>
 <body>
@@ -203,7 +212,7 @@
   <h4>재가단체 성지순례 ‘소태산 대종사님의 발자취를 찾아서’</h4><div class="w">교구 청운회 주관 · 60여 명</div><p>종곡유숙터, 원광선원, 제법성지, 연화삼매지 순례.</p></div>
 </article>
       </div>
-      <div class="news"><b>단원 소식</b><span class="privwrap"><span class="privhint" role="button" tabindex="0">🔒 눌러서 보기</span><span class="priv" aria-hidden="true">이의성 교무: 10월 21일 득남</span></span></div>
+      <div class="news"><b>단원 소식</b><span class="lock" role="button" tabindex="0" aria-label="비밀번호를 입력하면 볼 수 있는 내용" data-iv="FryB10i0BTvELRb1" data-ct="7x6rloa03iwoUW39wKpxMRLRRWaQd8dnQzaTP7EN1StOGRpA/DjDi+UuZ1DpoVjxbmVHRQ=="><span class="pill">🔒 비밀번호 입력</span><span class="bar"></span></span></div>
     </div>
 
     <div class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
@@ -232,7 +241,7 @@
           <li><span class="k">영산선학대학교</span>: 10월 좌산상사님 훈증 진행</li>
           <li><span class="k">영산사무소</span>: 10~11월 성지순례 교도 방문 증가. 가을 추수 후 햅쌀 약 70% 예약 판매</li>
           <li><span class="k">영광국제마음훈련원</span>: 10월 말~11월 초 춤명상(좌산상사님께서 원불교만의 춤명상이 있으면 좋겠다는 유시를 받들어 작년에 이어 올해도 개최), 힐링 콘서트 진행</li>
-          <li><span class="privwrap"><span class="privhint" role="button" tabindex="0">🔒 눌러서 보기</span><span class="priv" aria-hidden="true"><span class="k">13각단 한신우 단원</span>: 건강 문제로 10월부터 휴무</span></span></li>
+          <li><span class="lock" role="button" tabindex="0" aria-label="비밀번호를 입력하면 볼 수 있는 내용" data-iv="cklcxZkKc80ub4L8" data-ct="bsAzGt0PvlIdHq8Cugn4dZVPkSMSwlOxIHp6VzBOqQi12wV7bqEDxr5jY5b1wNHkNxzM6jNBgezl2bprF0UXFy5xBQ1/VsWsSSa1OHVXSH+nEI5jJQbL/cj+7j32KssQRB4Gh1U="><span class="pill">🔒 비밀번호 입력</span><span class="bar"></span></span></li>
         </ul>
 
         <h3>3. 제주교구</h3>
@@ -258,7 +267,7 @@
           <li><span class="k">교구청</span>: 법사·법호인 훈련, 교구 마음학교(사요를 중심으로) 「나의 신앙 나의 공부이야기」, 교무 문화기행(지역사회 바로 알기 – 원주·영월 중심으로 탐방) 진행</li>
           <li><span class="k">춘천교당</span>: 하반기 50일 정진기도 진행 (10월 25일까지)</li>
           <li><span class="k">태백교당</span>: 태백 순직산업전사 위령제 봉행, 교무 11명 참석</li>
-          <li><span class="k">영월교당</span>: <span class="privwrap"><span class="privhint" role="button" tabindex="0">🔒 눌러서 보기</span><span class="priv" aria-hidden="true">이선용 교무 항암 4회 종료, 방사선 치료 종료. 표적치료 18회 중 10회 진행</span></span></li>
+          <li><span class="k">영월교당</span>: <span class="lock" role="button" tabindex="0" aria-label="비밀번호를 입력하면 볼 수 있는 내용" data-iv="bs2UMCukmFVHZNUJ" data-ct="8KlF7o5FEaTe55GbrJJ+Sb2CoBF281bKFuWYaZ1lYULVWELoL7aPHBMXRDbJtXo4i2Pm8emPPrsvmMbBk9wS+TrgbY9gee2Hu3ERjJERt5EmKT6kZGviR2S3VwzVLhPaJJWOjQuz4kabvq4oaGO0GqA="><span class="pill">🔒 비밀번호 입력</span><span class="bar"></span></span></li>
           <li><span class="k">화천원광보은의집</span>: 매일 새벽 3,000일 기도 진행 중</li>
           <li><span class="k">화천교당</span>: 화천지역자활센터 직원 대상 마음챙김 강의 진행. 법회 후 어려운 이웃돕기 공병봉공 작업 시 화천자원봉사센터에서 방문 취재 – 연말 자원봉사대회 시 전 군민에게 영상 공개 예정</li>
         </ul>
@@ -295,6 +304,12 @@
 
 <div id="lb" role="dialog" aria-label="사진 크게 보기"><img alt=""></div>
 
+<div id="pw" role="dialog" aria-modal="true" aria-label="비밀번호 입력"><form>
+  <b>🔒 비밀번호 입력</b><p>단원 개인 소식은 비밀번호를 입력하시면 볼 수 있습니다.</p>
+  <input type="password" inputmode="numeric" autocomplete="off" maxlength="12" aria-label="비밀번호">
+  <div class="err"></div>
+  <div class="row"><button type="button" data-x>닫기</button><button type="submit">확인</button></div>
+</form></div>
 <script>
   const tabs=[...document.querySelectorAll('[role="tab"]')];
   tabs.forEach(t=>t.addEventListener('click',()=>{
@@ -303,12 +318,30 @@
   const lb=document.getElementById('lb'),lbi=lb.querySelector('img');
   document.querySelectorAll('.ev img').forEach(i=>i.addEventListener('click',()=>{lbi.src=i.src;lbi.alt=i.alt;lb.classList.add('on');}));
   lb.addEventListener('click',()=>lb.classList.remove('on'));
-  document.querySelectorAll('.privwrap').forEach(w=>{
-    const s=w.querySelector('.priv'),h=w.querySelector('.privhint');
-    const show=()=>{s.classList.add('on');h.classList.add('hide');s.removeAttribute('aria-hidden');};
-    w.addEventListener('click',show);
-    h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}});
-  });
+  (()=>{
+    const locks=[...document.querySelectorAll('.lock')]; if(!locks.length) return;
+    const SALT='9mRyDDVv+8Vgnw/WKr9LaQ==', ITER=300000;
+    const box=document.getElementById('pw'), inp=box.querySelector('input'), err=box.querySelector('.err');
+    const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+    async function unlock(pw){
+      const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+      const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(SALT),iterations:ITER,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+      const out=[];
+      for(const l of locks){
+        const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(l.dataset.iv)},key,b64(l.dataset.ct));
+        out.push([l,new TextDecoder().decode(pt)]);
+      }
+      out.forEach(([l,h])=>{const s=document.createElement('span');s.className='unl';s.innerHTML=h;l.replaceWith(s);});
+    }
+    const open=()=>{err.textContent='';inp.value='';box.classList.add('on');setTimeout(()=>inp.focus(),50);};
+    locks.forEach(l=>{l.addEventListener('click',open);l.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});});
+    box.querySelector('[data-x]').addEventListener('click',()=>box.classList.remove('on'));
+    box.querySelector('form').addEventListener('submit',async e=>{
+      e.preventDefault();
+      try{await unlock(inp.value.trim());box.classList.remove('on');}
+      catch(_){err.textContent='비밀번호가 맞지 않습니다.';inp.select();}
+    });
+  })();
 </script>
 </body>
 </html>
