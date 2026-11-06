@@ -109,6 +109,16 @@
   .qr img{width:84px;height:auto;flex:none}
   .qr a{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;margin-top:4px}
   .qr .t{font-size:13.5px;color:var(--sub)}
+  section,h3.sub{scroll-margin-top:64px}
+  .order li a{color:var(--accent);font-weight:600;text-decoration:none}
+  .order li a::after{content:" ›";color:var(--warm)}
+  .mokcha{display:grid;gap:8px}
+  .mg{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:4px}
+  .mg a{color:var(--ink);text-decoration:none;font-size:14.5px;padding:3px 0}
+  .mg a.mh{font-weight:700;color:var(--accent);font-size:15px}
+  .mg a:not(.mh){padding-left:12px}
+  .mg a:hover{text-decoration:underline}
+  .nm{text-decoration:underline;text-decoration-color:#c9ced4;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -129,14 +139,28 @@
   <section id="order">
     <h2 class="sec">회 순</h2>
     <ol class="order">
-      <li>출석보고</li><li>절부합절</li><li>개회</li><li>입정</li><li>심고</li><li>항단별 상황보고</li>
-      <li>문답·감정·해오</li><li>회화</li><li>기타</li><li>절부분급</li><li>폐회</li>
+      <li>출석보고</li><li>절부합절</li><li>개회</li><li>입정</li><li>심고</li>
+      <li><a href="#s1">항단별 상황보고</a></li><li><a href="#s2">문답·감정·해오</a></li>
+      <li><a href="#s3">회화</a></li><li><a href="#s4">기타</a></li><li>절부분급</li><li>폐회</li>
     </ol>
+    <h2 class="sec">목 차</h2>
+    <div class="mokcha">
+      <div class="mg"><a class="mh" href="#s1">Ⅰ. 항단별 상황보고</a>
+        <a href="#x-tk">1. 10월 출가교화단 특항보고</a>
+        <a href="#x-hd">2. 곤항1단, 곤항2단, 감항1단, 감항2단</a></div>
+      <div class="mg"><a class="mh" href="#s2">Ⅱ. 문답·감정·해오</a>
+        <a href="#x-gb">1. 공부발표 – <span class="nm" data-t="a1">박중훈</span>, <span class="nm" data-t="a2">이경열</span>, <span class="nm" data-t="a3">나상호</span>, <span class="nm" data-t="a4">오정도</span></a></div>
+      <div class="mg"><a class="mh" href="#s3">Ⅲ. 회화</a>
+        <a href="#x-fr">1. 자유 회화</a></div>
+      <div class="mg"><a class="mh" href="#s4">Ⅳ. 기 타</a>
+        <a href="#x-sb">1. 원기 111년 출가교화단 신분검사 시행 안내</a>
+        <a href="#x-d12">2. 원기 111년 12월 정단회 안내</a></div>
+    </div>
   </section>
 
   <section id="s1">
     <h2 class="sec">Ⅰ. 항단별 상황보고</h2>
-    <h3 class="sub">1. 원기 111년 10월 출가교화단 특항보고</h3>
+    <h3 class="sub" id="x-tk">1. 원기 111년 10월 출가교화단 특항보고</h3>
 
     <div class="tk"><div class="hd"><span class="hang">건항1단 (국외)</span><span class="gak">11각단 · 단장 : 한화중</span></div>
       <h4>[하노이교당 – 베트남 불교계 원불교 공식 방문]</h4>
@@ -157,13 +181,13 @@
       <h4>상시훈련 중심 단회 운영</h4>
       <ul><li>매달 상시훈련법 12조항 중 각자 챙긴 조항의 실천 내용을 발표하기로 하고, 이번 단회부터 단원별 사례를 나눔. 법위사정을 앞두고 각자 해당 법위의 법문에 자기 공부를 대조하는 회화도 진행 예정.</li></ul></div>
 
-    <h3 class="sub">2. 항단 상황보고 : 곤항 1단, 곤항 2단, 감항 1단, 감항 2단</h3>
+    <h3 class="sub" id="x-hd">2. 항단 상황보고 : 곤항 1단, 곤항 2단, 감항 1단, 감항 2단</h3>
     <a class="linkcard" href="../report/"><div><b>항단 상황보고 보기</b><span>곤항 1·2단, 감항 1·2단 상황보고 페이지로 이동</span></div><span class="arr">›</span></a>
   </section>
 
   <section id="s2">
     <h2 class="sec">Ⅱ. 문답·감정·해오</h2>
-    <h3 class="sub">1. 공부발표 – 박중훈, 이경열, 나상호, 오정도</h3>
+    <h3 class="sub" id="x-gb">1. 공부발표 – 박중훈, 이경열, 나상호, 오정도</h3>
     <div class="tabs" role="tablist">
 <button role="tab" aria-selected="true" aria-controls="a1" id="t-a1">박중훈</button>
 <button role="tab" aria-selected="false" aria-controls="a2" id="t-a2">이경열</button>
@@ -255,7 +279,7 @@
 
   <section id="s3">
     <h2 class="sec">Ⅲ. 회 화</h2>
-    <h3 class="sub">1. 자유회화</h3>
+    <h3 class="sub" id="x-fr">1. 자유회화</h3>
     <div class="box">
       <h4>▸ 회화 운영 방식</h4>
       <p>· 이번 회화는 별도의 주제나 자료 없이 자유 회화로 진행합니다.</p>
@@ -265,7 +289,7 @@
 
   <section id="s4">
     <h2 class="sec">Ⅳ. 기 타</h2>
-    <h3 class="sub">1. 원기 111년 출가교화단 신분검사 시행 안내</h3>
+    <h3 class="sub" id="x-sb">1. 원기 111년 출가교화단 신분검사 시행 안내</h3>
     <div class="box">
       <p>신분검사는 전무출신으로서 스스로의 공부와 생활을 대조하여 점검하는 출가교화단의 소중한 공부입니다. 올해 신분검사는 12월 정단회에서 정단원 여러분과 함께 진행하고자 하오니, 아래 내용을 참고해 주시기 바랍니다.</p>
 
@@ -297,7 +321,7 @@
       </dl>
     </div>
 
-    <h3 class="sub">2. 원기 111년 12월 정단회 안내</h3>
+    <h3 class="sub" id="x-d12">2. 원기 111년 12월 정단회 안내</h3>
     <div class="box">
       <dl class="kv">
         <dt>가. 일시</dt><dd>12월 9일(수) 오후 1시</dd>
@@ -320,6 +344,8 @@
   tabs.forEach(t=>t.addEventListener('click',()=>{
     tabs.forEach(b=>{const on=b===t;b.setAttribute('aria-selected',on);document.getElementById(b.getAttribute('aria-controls')).hidden=!on;});
   }));
+  function openTab(id){tabs.forEach(b=>{const on=b.getAttribute('aria-controls')===id;b.setAttribute('aria-selected',on);document.getElementById(b.getAttribute('aria-controls')).hidden=!on;});}
+  document.querySelectorAll('.nm').forEach(n=>n.addEventListener('click',ev=>{ev.preventDefault();openTab(n.dataset.t);document.getElementById('x-gb').scrollIntoView({behavior:'smooth'});}));
 </script>
 </body>
 </html>
