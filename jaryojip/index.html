@@ -128,6 +128,28 @@
   .pg.next{background:var(--accent);border-color:var(--accent);color:#fff;text-align:right}
   .pg.next small{color:#c9d6e6}
   .totop{font:inherit;display:block;width:100%;margin-top:8px;background:none;border:1px dashed #c9ced4;border-radius:10px;padding:10px;color:var(--sub);font-size:14px;cursor:pointer}
+  .fb{margin-top:44px;background:var(--card);border:2px solid var(--accent);border-radius:14px;padding:22px 20px}
+  .fb .fb-ey{font-size:12.5px;font-weight:700;color:var(--warm);letter-spacing:.06em}
+  .fb h2{margin:4px 0 6px;font-size:19px}
+  .fb .fb-lead{font-size:14.5px;color:var(--sub);margin-bottom:16px}
+  .fb fieldset{border:0;margin:0 0 16px;padding:0}
+  .fb legend{font-size:15px;font-weight:700;margin-bottom:8px;padding:0}
+  .stars{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .stars input{position:absolute;opacity:0;pointer-events:none}
+  .stars label{display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid var(--line);border-radius:10px;padding:10px 2px 8px;cursor:pointer;background:var(--bg);text-align:center}
+  .stars label b{font-size:18px;color:var(--accent)}
+  .stars label span{font-size:11.5px;color:var(--sub);line-height:1.3;word-break:keep-all}
+  .stars input:checked+label{background:var(--accent);border-color:var(--accent)}
+  .stars input:checked+label b,.stars input:checked+label span{color:#fff}
+  .stars input:focus-visible+label{outline:3px solid var(--warm);outline-offset:2px}
+  .fb textarea{width:100%;min-height:96px;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;resize:vertical;background:var(--bg)}
+  .fb .hp{position:absolute;left:-9999px}
+  .fb button[type=submit]{display:block;width:100%;margin-top:12px;font:inherit;font-size:15.5px;font-weight:700;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:13px;cursor:pointer}
+  .fb button[disabled]{opacity:.55;cursor:default}
+  .fb .msg{margin-top:10px;font-size:14px;color:var(--sub);min-height:1em}
+  .fb .done{text-align:center;padding:10px 0 4px}
+  .fb .done b{display:block;font-size:17px;color:var(--accent);margin-bottom:4px}
+  .fb .done button{font:inherit;font-size:13.5px;background:none;border:0;color:var(--sub);text-decoration:underline;cursor:pointer;margin-top:6px}
 </style>
 </head>
 <body>
@@ -142,7 +164,7 @@
   </header>
 
   <nav class="toc" aria-label="목차">
-    <a href="#order">회순</a><a href="#s1">Ⅰ. 항단별 상황보고</a><a href="#s2">Ⅱ. 문답·감정·해오</a><a href="#s3">Ⅲ. 회화</a><a href="#s4">Ⅳ. 기타</a>
+    <a href="#order">회순</a><a href="#s1">Ⅰ. 항단별 상황보고</a><a href="#s2">Ⅱ. 문답·감정·해오</a><a href="#s3">Ⅲ. 회화</a><a href="#s4">Ⅳ. 기타</a><a href="#fb">의견 남기기</a>
   </nav>
 
   <section id="order">
@@ -353,6 +375,34 @@
     </div>
   </section>
 
+  <section id="fb" class="fb" aria-labelledby="fb-h">
+    <div class="fb-ey">자료집 웹페이지 시범 운영</div>
+    <h2 id="fb-h">이번 웹 자료집, 어떠셨나요?</h2>
+    <p class="fb-lead">이번 달 자료집은 처음으로 웹페이지로 준비해 보았습니다. 보시면서 느끼신 점을 남겨 주시면 다음 자료집에 담아내겠습니다. (이름 없이 익명으로 전달됩니다.)</p>
+    <form id="fb-form" novalidate>
+      <fieldset>
+        <legend>만족도</legend>
+        <div class="stars">
+          <input type="radio" name="score" id="sc1" value="1"><label for="sc1"><b>1</b><span>매우<br>불만족</span></label>
+          <input type="radio" name="score" id="sc2" value="2"><label for="sc2"><b>2</b><span>불만족</span></label>
+          <input type="radio" name="score" id="sc3" value="3"><label for="sc3"><b>3</b><span>보통</span></label>
+          <input type="radio" name="score" id="sc4" value="4"><label for="sc4"><b>4</b><span>만족</span></label>
+          <input type="radio" name="score" id="sc5" value="5"><label for="sc5"><b>5</b><span>매우<br>만족</span></label>
+        </div>
+      </fieldset>
+      <label for="fb-c" style="display:block;font-size:15px;font-weight:700;margin-bottom:8px">의견 <span style="font-weight:400;color:var(--sub);font-size:13.5px">(선택)</span></label>
+      <textarea id="fb-c" name="comment" maxlength="1000" placeholder="좋았던 점, 불편했던 점, 바라는 점을 자유롭게 적어 주세요."></textarea>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">의견 보내기</button>
+      <div class="msg" id="fb-msg" role="status" aria-live="polite"></div>
+    </form>
+    <div class="done" id="fb-done" hidden>
+      <b>소중한 의견 감사합니다.</b>
+      <span style="font-size:14px;color:var(--sub)">보내 주신 의견은 다음 자료집을 준비하는 데 잘 살피겠습니다.</span><br>
+      <button type="button" id="fb-again">의견 하나 더 남기기</button>
+    </div>
+  </section>
+
   <footer>원불교 수위단회사무처</footer>
 </div>
 
@@ -366,6 +416,33 @@
   const goTop=()=>document.getElementById('x-gb').scrollIntoView({behavior:'smooth'});
   document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{openTab(b.dataset.go);goTop();}));
   document.querySelectorAll('[data-top]').forEach(b=>b.addEventListener('click',goTop));
+
+  /* ── 피드백: 결과는 구글 시트로만 전송 ── */
+  (function(){
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbx05-jVbDUltWsWmVOqYlw50ftcxXVhAvNOp27dnqiKDsfq9pSj5F_r7gPbGnSyfV9h/exec';
+    const PAGE = '원기111년 11월 정단회 자료집';
+    const KEY = 'fb-jaryojip-111-11';
+    const form = document.getElementById('fb-form'), done = document.getElementById('fb-done'), msg = document.getElementById('fb-msg');
+    const btn = form.querySelector('button[type=submit]');
+    const showDone = on => { form.hidden = on; done.hidden = !on; };
+    try { if (localStorage.getItem(KEY)) showDone(true); } catch(e) {}
+    document.getElementById('fb-again').addEventListener('click', () => { form.reset(); msg.textContent=''; showDone(false); });
+    form.addEventListener('submit', async ev => {
+      ev.preventDefault();
+      const score = (form.querySelector('input[name=score]:checked')||{}).value;
+      if (!score) { msg.textContent = '만족도를 먼저 골라 주세요.'; return; }
+      if (form.website.value) return;
+      btn.disabled = true; msg.textContent = '보내는 중입니다…';
+      const body = new URLSearchParams({ page: PAGE, score, comment: form.comment.value.trim(), device: /Mobi/i.test(navigator.userAgent) ? '모바일' : 'PC' });
+      try {
+        await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body });
+        try { localStorage.setItem(KEY, '1'); } catch(e) {}
+        showDone(true);
+      } catch(e) {
+        msg.textContent = '전송하지 못했습니다. 인터넷 연결을 확인한 뒤 다시 눌러 주세요.';
+      } finally { btn.disabled = false; }
+    });
+  })();
 </script>
 </body>
 </html>
