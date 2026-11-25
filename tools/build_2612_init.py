@@ -44,6 +44,7 @@ rep_css = open(J('2611', 'report', 'index.html'), encoding='utf-8').read()
 lc = ''.join(re.findall(r'  \.linkcard[^\n]*\n', rep_css))
 if '.linkcard{' not in idx:
     idx = idx.replace('</style>', lc + '</style>', 1)
+idx = idx.replace('원불교 수위단회사무처 교화단과', '원불교 수위단회사무처')
 open(J('index.html'), 'w', encoding='utf-8').write(idx)
 
 # 3) 상황보고
@@ -76,6 +77,8 @@ sect = f'''<section>
   </section>'''
 rep = sub1(r'<section>\s*<div class="tabs".*?</section>', sect, rep)
 # 12월 자료집이 나오기 전이므로 자료집 버튼은 뺀다(자료집 게시 때 다시 넣음)
-rep = sub1(r'\s*<a class="linkcard"[^\n]*</a>\n', '\n', rep)
+rep = sub1(r'\s*<a class="linkcard"[^\n]*</a>\n',
+           '\n\n  <a class="linkcard" href="../2611/report/"><div><b>이전 상황보고 참고하기</b><span>11월 정단회 상황보고로 이동</span></div><span class="arr">›</span></a>\n', rep)
+rep = rep.replace('원불교 수위단회사무처 교화단과', '원불교 수위단회사무처')
 open(J('report', 'index.html'), 'w', encoding='utf-8').write(rep)
 print('ok')
