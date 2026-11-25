@@ -32,7 +32,7 @@ idx = idx.replace('<meta property="og:image" content="img/gh1-12.jpg">',
                   '<meta property="og:image" content="jaryojip/emblem.png">')
 idx = sub1(r'<p class="lead">.*?</p>',
            '<p class="lead">12월 정단회에서는 건항 1·2단, 태항 1·2단의 항단 상황보고가 있습니다. '
-           '발표하실 내용을 미리 보내주시면 정단회 자료에 담아 함께 공유드릴 수 있도록 하겠습니다.</p>', idx)
+           '발표하실 내용을 <b>12월 2일(수)까지</b> 보내주시면 정단회 자료에 담아 함께 공유드릴 수 있도록 하겠습니다.</p>', idx)
 sec2 = '''<section>
     <h2><span class="num">2</span>지난달 항단 상황보고</h2>
     <p>형식은 자유롭게 정해 주시면 됩니다. 11월 정단회에서 나눈 곤항 1·2단, 감항 1·2단의 상황보고를 참고로 보실 수 있습니다.</p>
@@ -56,7 +56,7 @@ rep = rep.replace('<meta property="og:image" content="../img/gh1-12.jpg">',
                   '<meta property="og:image" content="../jaryojip/emblem.png">')
 rep = rep.replace('<h1>원기111년 11월 정단회<br>상황보고</h1>', '<h1>원기111년 12월 정단회<br>상황보고</h1>')
 rep = sub1(r'<p class="lead">.*?</p>',
-           '<p class="lead">건항 1·2단, 태항 1·2단에서 보내주시는 상황보고를 모으고 있습니다.</p>', rep)
+           '<p class="lead">건항 1·2단, 태항 1·2단에서 보내주시는 상황보고를 모으고 있습니다. 상황보고는 <b>12월 2일(수)까지</b> 보내주시면 됩니다.</p>', rep)
 status = '<div class="status">\n' + ''.join(
     f'    <div class="st"><b>{n}</b><span class="wait">접수 중</span></div>\n' for _, n in TEAMS) + '  </div>'
 rep = sub1(r'<div class="status">.*?</div>\n  </div>', status, rep)
