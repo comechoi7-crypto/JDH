@@ -64,7 +64,7 @@
   #lb.on{display:flex}
   #lb img{max-width:100%;max-height:100%;border-radius:6px}
 
-  .status{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 6px}
+  .status{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0}
   .st{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 8px;text-align:center}
   .st b{display:block;font-size:15px}
   .st span{display:inline-block;margin-top:4px;font-size:12px;font-weight:600;padding:1px 9px;border-radius:99px}
@@ -90,6 +90,7 @@
   #pw .row{display:flex;gap:8px;margin-top:10px}
   #pw button{flex:1;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer}
   #pw button[type=submit]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  #sec-status h2{margin-top:0}
 </style>
 </head>
 <body>
@@ -101,14 +102,19 @@
     <p class="lead">건항 1·2단, 태항 1·2단에서 보내주시는 상황보고를 모으고 있습니다. 상황보고는 <b>12월 2일(수)까지</b> 보내주시면 됩니다.</p>
   </header>
 
+  <section id="sec-status">
+    <h2><span class="num">1</span>접수 현황</h2>
   <div class="status">
     <div class="st"><b>건항 1단</b><span class="wait">접수 중</span></div>
     <div class="st"><b>건항 2단</b><span class="wait">접수 중</span></div>
     <div class="st"><b>태항 1단</b><span class="wait">접수 중</span></div>
     <div class="st"><b>태항 2단</b><span class="wait">접수 중</span></div>
   </div>
+    <p class="note">상황보고가 들어오는 대로 '접수'로 바꾸고 아래 탭에 담습니다.</p>
+  </section>
 
   <section>
+    <h2><span class="num">2</span>항단 상황보고</h2>
     <div class="tabs" role="tablist">
       <button role="tab" aria-selected="true" aria-controls="p1" id="t1">건항 1단</button>
       <button role="tab" aria-selected="false" aria-controls="p2" id="t2">건항 2단</button>
@@ -137,7 +143,15 @@
     </div>
   </section>
 
-  <a class="linkcard" href="../2611/report/"><div><b>이전 상황보고 참고하기</b><span>11월 정단회 상황보고로 이동</span></div><span class="arr">›</span></a>
+  <section>
+    <h2><span class="num">3</span>지난달 항단 상황보고</h2>
+    <p>11월 정단회에서 나눈 곤항 1·2단, 감항 1·2단의 상황보고를 참고로 보실 수 있습니다.</p>
+    <a class="linkcard" href="../2611/report/"><div><b>11월 정단회 상황보고 보기</b><span>곤항 1·2단, 감항 1·2단</span></div><span class="arr">›</span></a>
+  </section>
+
+  <div class="closing">
+    <p>바쁘신 가운데 늘 항단을 살펴 주셔서 감사드립니다.<br>각 항단의 소식이 모여 정단회가 더 풍성해질 수 있도록 함께해 주시면 고맙겠습니다.</p>
+  </div>
 
   <footer>원불교 수위단회사무처</footer>
 </div>
