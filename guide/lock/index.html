@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<title>웹페이지 부분 잠금 만들기</title>
+<meta property="og:title" content="웹페이지 부분 잠금 만들기">
+<meta property="og:description" content="페이지 일부만 비밀번호로 잠그는 방법 — 설명, 직접 해 보기, 예제 내려받기">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{--ink:#1f2a37;--sub:#5b6573;--line:#e3e6ea;--bg:#f6f5f1;--card:#fff;--accent:#1e3a5f;--soft:#e8eef5;--warm:#a0703a}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Noto Sans KR",system-ui,sans-serif;line-height:1.7;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 18px 64px}
+  header{padding-bottom:24px;border-bottom:2px solid var(--accent);margin-bottom:8px}
+  .eyebrow{font-size:13px;letter-spacing:.08em;color:var(--warm);font-weight:600}
+  h1{font-size:25px;line-height:1.4;margin:8px 0 12px}
+  .lead{font-size:15.5px;color:var(--sub);margin:0}
+  nav.toc{display:flex;flex-wrap:wrap;gap:6px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:3;border-bottom:1px solid var(--line)}
+  nav.toc a{font-size:13px;text-decoration:none;color:var(--accent);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:3px 11px}
+  h2{font-size:18px;margin:40px 0 14px;display:flex;align-items:center;gap:10px;scroll-margin-top:60px}
+  h2 .num{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;flex:none}
+  h3{font-size:15.5px;margin:22px 0 8px}
+  p{margin:0 0 12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:14.5px}
+  .flow{display:grid;grid-template-columns:1fr;gap:8px;margin:0;padding:0;list-style:none;counter-reset:f}
+  .flow li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px 12px 48px;position:relative;font-size:14.5px}
+  .flow li::before{counter-increment:f;content:counter(f);position:absolute;left:14px;top:12px;width:24px;height:24px;line-height:24px;text-align:center;border-radius:6px;background:var(--soft);color:var(--accent);font-weight:700;font-size:13px}
+  .flow b{display:block}
+  .flow span{color:var(--sub);font-size:13.5px}
+  .demo{background:var(--card);border:2px dashed var(--warm);border-radius:12px;padding:16px 16px 8px}
+  .demo .hint{font-size:13px;color:var(--warm);font-weight:700;margin-bottom:10px}
+  .pub{border:2px solid var(--accent);background:#f3f7fb;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:14.5px}
+  .pub p,.demo p{margin:0 0 6px}
+  .lock{position:relative;margin:10px 0;border-radius:10px;overflow:hidden}
+  .fog{filter:blur(5px);user-select:none;-webkit-user-select:none;color:#7b8794;font-size:14px;line-height:1.9;padding:10px 6px;word-break:break-all;pointer-events:none}
+  .unlock{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font:inherit;font-size:13.5px;font-weight:600;background:rgba(255,255,255,.95);color:var(--accent);border:1px solid var(--accent);border-radius:99px;padding:7px 16px;cursor:pointer;white-space:nowrap}
+  table{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--soft);font-size:13px;color:var(--accent)}
+  td code{font-size:13px}
+  .ok{color:#2f6b49;font-weight:700}.no{color:#b42318;font-weight:700}
+  .codebox{position:relative;margin:10px 0 6px}
+  pre{margin:0;background:#1f2a37;color:#e7edf4;border-radius:10px;padding:14px 14px;font-size:12.5px;line-height:1.6;overflow-x:auto;white-space:pre}
+  pre.bad{background:#3b1f22}
+  .copy{position:absolute;top:8px;right:8px;font:inherit;font-size:12px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:2px 9px;cursor:pointer}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--soft);border-radius:4px;padding:0 4px;font-size:.92em}
+  pre code{background:none;padding:0}
+  .note{font-size:13.5px;color:var(--sub)}
+  .warn{background:#fbf4ea;border-radius:10px;padding:12px 16px;font-size:14px}
+  .warn b{color:var(--warm)}
+  .warn ul,.card ul{margin:4px 0 0;padding-left:18px}
+  .warn li,.card li{margin-bottom:4px}
+  .linkcard{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--accent);color:#fff;text-decoration:none;border-radius:12px;padding:16px 18px}
+  .linkcard b{display:block;font-size:15.5px}
+  .linkcard span{font-size:13px;opacity:.85}
+  .linkcard .arr{font-size:22px;flex:none}
+  footer{margin-top:36px;font-size:13px;color:var(--sub);text-align:center}
+  #pw{position:fixed;inset:0;background:rgba(15,23,35,.55);display:none;align-items:center;justify-content:center;z-index:9;padding:20px}
+  #pw.on{display:flex}
+  #pw .box{background:#fff;border-radius:14px;padding:22px 20px;width:100%;max-width:320px;text-align:center}
+  #pw h3{margin:0 0 6px;font-size:17px}
+  #pw p{margin:0 0 14px;font-size:13.5px;color:var(--sub)}
+  #pw input{width:100%;font:inherit;font-size:22px;letter-spacing:.5em;text-align:center;padding:10px;border:1px solid var(--line);border-radius:8px}
+  #pw .err{color:#b42318;font-size:13px;min-height:20px;margin:6px 0 0}
+  #pw .btns{display:flex;gap:8px;margin-top:8px}
+  #pw .btns button{flex:1;font:inherit;font-size:15px;padding:10px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer}
+  #pw .btns .okb{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">수위단회사무처 · 작업 방법 공유</div>
+  <h1>웹페이지 일부만<br>비밀번호로 잠그기</h1>
+  <p class="lead">페이지의 한 부분은 누구나 보게 하고, 나머지는 비밀번호를 넣어야 보이게 하는 방법입니다. 11월 정단회 법위사정 공유 페이지의 회의록 원문 보기를 이 방식으로 만들었습니다.</p>
+</header>
+<nav class="toc">
+  <a href="#s1">원리</a><a href="#s2">직접 해 보기</a><a href="#s3">만드는 순서</a><a href="#s4">코드</a><a href="#s5">알아 둘 점</a><a href="#s6">내려받기</a>
+</nav>
+
+<h2 id="s1"><span class="num">1</span>어떤 원리인가요</h2>
+<p>가릴 부분을 <b>흐리게만</b> 만든 것이 아니라, 올리기 전에 내용 자체를 <b>암호문으로 바꿔</b> 넣습니다. 화면에 보이는 흐린 글자는 같은 길이의 임의 글자일 뿐이고, 비밀번호를 넣으면 그 자리에서 원문으로 풀립니다.</p>
+<table>
+  <tr><th>방식</th><th>화면</th><th>소스 보기·복사</th></tr>
+  <tr><td>CSS로 흐리게만</td><td>흐리게 보임</td><td class="no">원문이 그대로 보임 ✕</td></tr>
+  <tr><td>암호화 + 가짜 글자</td><td>흐리게 보임</td><td class="ok">암호문만 보임 ○</td></tr>
+</table>
+<p class="note" style="margin-top:10px">❌ 이렇게 만들면 안 됩니다. 원문과 비밀번호가 페이지 소스에 그대로 드러납니다.</p>
+<div class="codebox"><pre class="bad"><code>&lt;p style=&quot;filter:blur(5px)&quot;&gt;가릴 내용&lt;/p&gt;
+&lt;script&gt;if(prompt(&#x27;비밀번호&#x27;)===&#x27;1234&#x27;) …&lt;/script&gt;</code></pre></div>
+
+<h2 id="s2"><span class="num">2</span>직접 해 보기</h2>
+<div class="demo">
+  <div class="hint">▶ 연습용 비밀번호: 1234</div>
+  <p>일시 : 원기 ○○. ○. ○.</p>
+  <div class="lock" data-iv="ika6Ttfj4DnPnC/D" data-ct="2vn+4Lzp7e55zWKkCbUezZshujQZVWCL3rQNbGurrSw/zV8+K/2pa5p9agGAVrFttnarUNqTNiso8Xmbtir4CsQIPcwZ7rJPRw5RM7pitr9eNCOQCoafhHUoNrlHW30+J7njwyCRi4/FaCnzWfe8lNwqJ3cdaPMqwvovPOG3tJGe1kr6WliwFcvKmfvlBwg1I5oYiYcwAElV66swaN9hWoGka7WQZZp0eoxfD31Smo7iJM1jZWavdWvf90ZoQsNjLmnHU8lsLifb0e4ARr71ZXx3"><div class="fog" aria-hidden="true">컔 쩖뀱쨇뫿쨘켭퓦뫗쵻곸뀙퇔 봾쓎읒탬뒕눼 벂쟪뽄쒲츮텤속귕틅뙰샣킚헳킴돶 쫱 왅굉욒껔껠톇뷜깎냭 뢡뺩뗿솿듚</div><button type="button" class="unlock">🔒 비밀번호 입력</button></div>
+  <div class="pub"><p><b>공개 부분</b> — 이 부분은 비밀번호 없이 누구나 볼 수 있습니다.</p></div>
+  <div class="lock" data-iv="BFx2yxiuSumlcj8q" data-ct="2/tkwauRG2znax19Iz+R8tUG6sEaQqTuLHJWirU02dPPYLGAuooLzECuGXRqiBDj0NFMoQrezNdhGehJMTtB6nMeNNDcSzUKUUCaJFPTdQnc/NgzFSIxbc7zWGtY/+MUAsgnxtHDOeO3LGrz9GlKM0/LrPJ30wCnnUWiLQoIvpvaZ04hFLnhefLR8jfsAYoxlAIBPa2aGkezl68B"><div class="fog" aria-hidden="true">쐭쵈툟느챳풘묵쟿쵚솰 턞쐘푵 셆흹틷쭔  쎠줴퉾썋쎠볧쐣 큮둩먾봽럾햒늄셜멝</div><button type="button" class="unlock">🔒 비밀번호 입력</button></div>
+</div>
+<p class="note" style="margin-top:8px">틀린 번호를 넣으면 '비밀번호가 맞지 않습니다'가 뜹니다. 한 번 맞게 넣으면 두 곳이 함께 풀립니다.</p>
+
+<h2 id="s3"><span class="num">3</span>만드는 순서</h2>
+<ol class="flow">
+  <li><b>원본에 가릴 곳 표시</b><span>원본.html에서 가릴 부분을 &lt;priv&gt; … &lt;/priv&gt;로 감쌉니다.</span></li>
+  <li><b>비밀번호 정하기</b><span>.pw 파일에 비밀번호 한 줄만 적습니다.</span></li>
+  <li><b>암호화 실행</b><span>python build.py → 잠긴 index.html이 만들어집니다.</span></li>
+  <li><b>확인</b><span>index.html을 열어 틀린 번호·맞는 번호를 넣어 봅니다.</span></li>
+  <li><b>올리기</b><span>깃허브에는 index.html만 올립니다.</span></li>
+</ol>
+<h3>파일 구성</h3>
+<table>
+  <tr><th>파일</th><th>역할</th><th>올리기</th></tr>
+  <tr><td><code>원본.html</code></td><td>원문 전체, 가릴 곳 표시</td><td class="no">✕</td></tr>
+  <tr><td><code>build.py</code></td><td>&lt;priv&gt; 부분을 암호화</td><td class="no">✕</td></tr>
+  <tr><td><code>.pw</code></td><td>비밀번호 한 줄</td><td class="no">✕</td></tr>
+  <tr><td><code>index.html</code></td><td>결과(잠긴 페이지)</td><td class="ok">○</td></tr>
+</table>
+<p class="note" style="margin-top:10px">원문과 비밀번호가 든 파일은 내 컴퓨터에만 두고, 암호화된 결과만 공개하는 것이 핵심입니다.</p>
+
+<h2 id="s4"><span class="num">4</span>코드</h2>
+<h3>① 원본에 가릴 곳 표시</h3>
+<div class="codebox"><pre><code>&lt;p&gt;이 부분은 누구나 봅니다.&lt;/p&gt;
+&lt;priv&gt;
+  &lt;p&gt;이 부분은 잠깁니다.&lt;/p&gt;
+&lt;/priv&gt;</code></pre><button class="copy">복사</button></div>
+<p class="note">&lt;priv&gt;는 여러 곳에 써도 됩니다. 안에 또 &lt;priv&gt;를 넣지는 마세요.</p>
+
+<h3>② 암호화 프로그램 (build.py)</h3>
+<div class="codebox"><pre><code>&quot;&quot;&quot;부분 잠금 페이지 만들기
+같은 폴더의 원본.html 을 읽어 &lt;priv&gt;…&lt;/priv&gt; 부분을 .pw 의 비밀번호로 암호화하고
+index.html 을 만듭니다.  깃허브에는 index.html 만 올립니다.
+
+처음 한 번:  pip install cryptography
+실행:        python build.py
+&quot;&quot;&quot;
+import base64, os, re, random
+from pathlib import Path
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from cryptography.hazmat.primitives import hashes
+
+HERE = Path(__file__).resolve().parent
+PW   = (HERE / &quot;.pw&quot;).read_text(encoding=&quot;utf-8&quot;).strip()      # ① 비밀번호 읽기
+SALT = os.urandom(16)                                          # ② 임의값(공개돼도 됨)
+KEY  = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32,        # ③ 비밀번호 → 열쇠
+                  salt=SALT, iterations=300000).derive(PW.encode())
+b64  = lambda x: base64.b64encode(x).decode()
+
+def lock(m):                                                   # ④ &lt;priv&gt; 한 덩어리 잠금
+    inner = m.group(1)
+    iv = os.urandom(12)
+    ct = AESGCM(KEY).encrypt(iv, inner.encode(), None)
+    plain = re.sub(r&quot;&lt;[^&gt;]+&gt;|\s+&quot;, &quot;&quot;, inner)
+    fake = &quot;&quot;.join(chr(0xAC00 + random.randrange(11172)) if random.random() &gt; .15 else &quot; &quot;
+                   for _ in range(max(30, len(plain))))
+    return (f&#x27;&lt;div class=&quot;lock&quot; data-iv=&quot;{b64(iv)}&quot; data-ct=&quot;{b64(ct)}&quot;&gt;&#x27;
+            f&#x27;&lt;div class=&quot;fog&quot; aria-hidden=&quot;true&quot;&gt;{fake}&lt;/div&gt;&#x27;
+            f&#x27;&lt;button type=&quot;button&quot; class=&quot;unlock&quot;&gt;🔒 비밀번호 입력&lt;/button&gt;&lt;/div&gt;&#x27;)
+
+src = (HERE / &quot;원본.html&quot;).read_text(encoding=&quot;utf-8&quot;)
+src = re.sub(r&quot;&lt;!--.*?--&gt;&quot;, &quot;&quot;, src, flags=re.S)              # 주석 제거(주석 속 &lt;priv&gt; 오인 방지)
+n   = len(re.findall(r&quot;&lt;priv&gt;&quot;, src))
+out = re.sub(r&quot;&lt;priv&gt;(.*?)&lt;/priv&gt;&quot;, lock, src, flags=re.S)     # ⑤ 모든 &lt;priv&gt; 교체
+out = out.replace(&quot;{{SALT}}&quot;, b64(SALT))                       # ⑥ 임의값 심기
+(HERE / &quot;index.html&quot;).write_text(out, encoding=&quot;utf-8&quot;)
+print(f&quot;완료: index.html (잠근 부분 {n}곳)&quot;)
+
+# 안전 점검: 비밀번호가 결과에 들어갔는지
+if PW in out:
+    print(&quot;⚠ 경고: 결과 파일에 비밀번호 문자열이 보입니다. 올리기 전에 확인하세요.&quot;)
+</code></pre><button class="copy">복사</button></div>
+<div class="card"><ul>
+  <li><b>①~③</b> 비밀번호를 30만 번 섞어 열쇠를 만듭니다. 하나씩 넣어 보는 시도를 느리게 하려는 것입니다.</li>
+  <li><b>④</b> 원문을 AES-GCM으로 암호화해 <code>data-ct</code>에 넣고, 화면에는 같은 길이의 임의 한글만 흐리게 둡니다.</li>
+  <li><b>⑤</b> 원본의 &lt;priv&gt;를 모두 찾아 잠긴 덩어리로 바꿉니다.</li>
+  <li><b>⑥</b> 임의값(SALT)을 페이지에 넣습니다. 이 값은 공개되어도 괜찮습니다.</li>
+</ul></div>
+
+<h3>③ 잠금 해제 코드 (원본.html 맨 아래)</h3>
+<div class="codebox"><pre><code>const SALT=&quot;{{SALT}}&quot;;   // build.py가 실제 값으로 바꿔 넣음
+const b=s=&gt;Uint8Array.from(atob(s),c=&gt;c.charCodeAt(0));
+async function unlock(pw){
+  const km=await crypto.subtle.importKey(&#x27;raw&#x27;,
+    new TextEncoder().encode(pw),&#x27;PBKDF2&#x27;,false,[&#x27;deriveKey&#x27;]);
+  const key=await crypto.subtle.deriveKey(
+    {name:&#x27;PBKDF2&#x27;,salt:b(SALT),iterations:300000,hash:&#x27;SHA-256&#x27;},
+    km,{name:&#x27;AES-GCM&#x27;,length:256},false,[&#x27;decrypt&#x27;]);
+  for(const l of document.querySelectorAll(&#x27;.lock&#x27;)){
+    const pt=await crypto.subtle.decrypt(
+      {name:&#x27;AES-GCM&#x27;,iv:b(l.dataset.iv)},key,b(l.dataset.ct));
+    const d=document.createElement(&#x27;div&#x27;);
+    d.innerHTML=new TextDecoder().decode(pt);
+    l.replaceWith(...d.childNodes);   // 흐린 글자 → 원문
+  }
+}</code></pre><button class="copy">복사</button></div>
+
+<h3>④ 설정 맞추기 — 중요</h3>
+<p>파이썬(build.py)과 자바스크립트(원본.html)의 설정이 하나라도 다르면, 맞는 비밀번호로도 풀리지 않습니다.</p>
+<table>
+  <tr><th>항목</th><th>값</th></tr>
+  <tr><td>열쇠 만드는 방식</td><td>PBKDF2 + SHA-256</td></tr>
+  <tr><td>반복 횟수</td><td>300000</td></tr>
+  <tr><td>암호화 방식</td><td>AES-GCM 256</td></tr>
+</table>
+
+<h3>⑤ 실행</h3>
+<div class="codebox"><pre><code>pip install cryptography   # 처음 한 번만
+python build.py            # 맥은 python3 build.py</code></pre><button class="copy">복사</button></div>
+<p class="note">'완료: index.html (잠근 부분 ○곳)'이 나오면 성공입니다.</p>
+
+<h2 id="s5"><span class="num">5</span>알아 둘 점</h2>
+<div class="warn"><ul>
+  <li><b>고칠 때</b> — index.html을 직접 고치지 말고, 원본.html을 고친 뒤 build.py를 다시 실행합니다.</li>
+  <li><b>공개 범위</b> — 링크를 받은 사람은 누구나 공개 부분을 볼 수 있습니다.</li>
+  <li><b>잠금 수준</b> — 숫자 네 자리는 시간을 들여 하나씩 넣어 보면 풀립니다. '지나가다 보는 것을 막는 정도'로 보시고, 더 단단히 하려면 비밀번호를 길게 정하세요.</li>
+  <li><b>수정 기록</b> — 잠그기 전의 원문을 한 번이라도 깃허브에 올렸다면 수정 기록에 남아 있습니다.</li>
+</ul></div>
+
+<h2 id="s6"><span class="num">6</span>예제 내려받기</h2>
+<a class="linkcard" href="lock-example.zip" download><div><b>연습용 예제 묶음 (zip)</b><span>원본.html · build.py · .pw(1234) · index.html · 사용법.txt</span></div><span class="arr">↓</span></a>
+<p class="note" style="margin-top:10px">압축을 풀고 index.html을 먼저 열어 1234를 넣어 보세요. 예제에는 실제 회의록 내용이 들어 있지 않습니다.</p>
+
+<footer>수위단회사무처 · 원기 111년 11월</footer>
+</div>
+
+<div id="pw" role="dialog" aria-modal="true">
+  <div class="box">
+    <h3>🔒 비밀번호 입력</h3>
+    <p>연습용 비밀번호는 1234입니다.</p>
+    <input type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="8">
+    <div class="err"></div>
+    <div class="btns"><button type="button" class="nob">닫기</button><button type="button" class="okb">확인</button></div>
+  </div>
+</div>
+<script>
+const SALT="2vjClXi91VH+sd7ITpeuow==",ITER=300000;
+const b=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const pw=document.getElementById('pw'),inp=pw.querySelector('input'),err=pw.querySelector('.err');
+document.querySelectorAll('.unlock').forEach(x=>x.onclick=()=>{err.textContent='';inp.value='';pw.classList.add('on');setTimeout(()=>inp.focus(),50)});
+pw.querySelector('.nob').onclick=()=>pw.classList.remove('on');
+async function tryUnlock(){
+  try{
+    const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(inp.value),'PBKDF2',false,['deriveKey']);
+    const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b(SALT),iterations:ITER,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+    const locks=[...document.querySelectorAll('.lock')],outs=[];
+    for(const l of locks){outs.push(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b(l.dataset.iv)},key,b(l.dataset.ct))));}
+    locks.forEach((l,i)=>{const d=document.createElement('div');d.innerHTML=outs[i];l.replaceWith(...d.childNodes);});
+    pw.classList.remove('on');
+  }catch(e){err.textContent='비밀번호가 맞지 않습니다';inp.select();}
+}
+pw.querySelector('.okb').onclick=tryUnlock;
+inp.addEventListener('keydown',e=>{if(e.key==='Enter')tryUnlock()});
+document.querySelectorAll('.copy').forEach(c=>c.onclick=async()=>{
+  const t=c.previousElementSibling.innerText;
+  try{await navigator.clipboard.writeText(t);}catch(e){const r=document.createRange();r.selectNodeContents(c.previousElementSibling);const s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');s.removeAllRanges();}
+  c.textContent='복사됨';setTimeout(()=>c.textContent='복사',1500);
+});
+</script>
+</body>
+</html>
